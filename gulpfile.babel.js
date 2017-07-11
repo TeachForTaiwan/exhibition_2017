@@ -1,6 +1,9 @@
-const gulp = require('gulp');
-const gulpLoadPlugins = require('gulp-load-plugins');
-const browserSync = require('browser-sync').create(); // browser auto reload
+import babel from 'rollup-plugin-babel';
+import browserSync from 'browser-sync';
+import gulp from 'gulp';
+import gulpLoadPlugins from 'gulp-load-plugins';
+import { rollup } from 'rollup';
+import uglify from 'rollup-plugin-uglify';
 
 const $ = gulpLoadPlugins();
 
@@ -11,7 +14,7 @@ gulp.task('browserSync', ['default'], () => {
     notify: false,
     port: 8000,
     server: {
-      baseDir: 'dist'
+      baseDir: 'dist',
     },
   });
 });
@@ -34,11 +37,11 @@ gulp.task('css', () => {
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({ browsers: ['last 2 versions'] }))
     .pipe(gulp.dest('dist/css')) // output folder
-    .pipe(browserSync.stream())
+    .pipe(browserSync.stream());
   // .pipe($.notify("Compile Sass Complete!"))
 });
 
-gulp.task('css-min', ()=>{
+gulp.task('css-min', () => {
   gulp.src('src/sass/**/*.scss')
     .pipe($.plumber())
     .pipe($.sass.sync({
@@ -52,30 +55,50 @@ gulp.task('css-min', ()=>{
     .pipe($.notify({
       message: 'Minify Sass Complete!',
       onLast: true,
-    }))
+    }));
 });
 
-gulp.task('js', () => {
-  gulp.src('src/js/**/*.js')
-    .pipe($.plumber())
-    .pipe($.babel())
-    .pipe(gulp.dest('dist/js')) // output folder
-    .pipe(browserSync.stream())
-  // .pipe($.notify("Compile Javascript Complete!"))
-});
-
-gulp.task('js-min', () => {
-  gulp.src('src/js/**/*.js')
-    .pipe($.plumber())
-    .pipe($.babel())
-    .pipe($.uglify()) // minify
-    .pipe($.rename({ suffix: '.min' }))
+gulp.task('js', () => rollup({
+  entry: 'src/js/main.js',
+  plugins: [
+    babel({
+      presets: [
+        ['es2015', { modules: false }],
+      ],
+      babelrc: false,
+      exclude: 'node_modules/**',
+    }),
+  ],
+})
+  .then(bundle => bundle.generate({
+    format: 'umd',
+    moduleName: 'myModuleName',
+  }))
+  .then(gen => $.file('bundle.js', gen.code, { src: true })
     .pipe(gulp.dest('dist/js'))
-    .pipe($.notify({
-      message: 'Minify Javascript Complete!',
-      onLast: true,
-    }))
-});
+    .pipe(browserSync.stream()),
+  ),
+);
+gulp.task('js-min', () => rollup({
+  entry: 'src/js/main.js',
+  plugins: [
+    babel({
+      presets: [
+        ['es2015', { modules: false }],
+      ],
+      babelrc: false,
+      exclude: 'node_modules/**',
+    }),
+    uglify(),
+  ],
+})
+  .then(bundle => bundle.generate({
+    format: 'umd',
+    moduleName: 'myModuleName',
+  }))
+  .then(gen => $.file('bundle.min.js', gen.code, { src: true })
+    .pipe(gulp.dest('dist/js'))),
+);
 
 gulp.task('views', () => {
   gulp.src('src/views/**/*.pug')
@@ -84,6 +107,6 @@ gulp.task('views', () => {
       pretty: true,
     }))
     .pipe(gulp.dest('dist')) // output folder
-    .pipe(browserSync.stream())
+    .pipe(browserSync.stream());
   // .pipe($.notify("Compile Pug Complete!"))
 });
