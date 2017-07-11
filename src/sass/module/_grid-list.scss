@@ -1,0 +1,28 @@
+.grid-list {
+    display: flex;
+    flex-wrap: wrap;
+    .grid-item {
+        margin: 0;
+        width: 50%;
+        filter: grayscale(1);
+        cursor: pointer;
+        transition: .1s ease-in-out;
+        &:hover {
+            opacity: .95;
+            filter: grayscale(0);
+        }
+        @include for-tablet-portrait-up {
+            width: calc(100% / 3);
+        }
+        @include for-tablet-landscape-up {
+            width: calc(100% / 4);
+        }
+        @include for-desktop-up {
+            width: calc(100% / 6);
+        }
+        &__thumbnail {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
