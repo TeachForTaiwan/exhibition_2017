@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="author" content="akccakcctw"/>
+    <title>exhibition_2017</title>
+    <link rel="stylesheet" href="css/main.css"/>
+  </head>
+  <body>
+    <header></header>
+    <h1 class="main-title">Upload</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quam.</p>
+    <form class="form" id="form--upload" name="form--upload" @submit.prevent="onSubmit">
+      <div class="datainput-container">
+        <label class="label" for="pic"><span class="title">5MB內JPG格式</span>
+          <input id="pic" name="pic" type="file" required="required"/>
+        </label>
+        <label class="label" for="name"><span class="title">投稿者</span>
+          <input id="name" v-model="name" @blur="isValidName() + setLocalStorage()" name="name" type="text" placeholder="投稿者" required="required"/>
+        </label>
+        <label class="label" for="email"><span class="title">聯絡信箱</span>
+          <input id="email" v-model="email" @blur="isValidEmail() + setLocalStorage()" name="email" type="email" placeholder="聯絡信箱" required="required"/>
+        </label>
+        <label class="label" for="message"><span class="title">留言訊息</span>
+          <textarea id="message" v-model="message" @blur="isValidMessage() + setLocalStorage()" name="message" placeholder="留言內容" required="required"></textarea>
+        </label>
+      </div>
+      <div class="func-container">
+        <button class="btn" @click="onReset" type="reset">reset</button>
+        <button class="btn" type="submit">send</button>
+      </div>
+    </form>
+    <footer>
+      <div class="container">
+        <ul>
+          <li><a href="http://www.teach4taiwan.org" target="_blank">官方網站</a></li>
+          <li><a href="https://teach4taiwan.wordpress.com" target="_blank">為台灣而教故事棧</a></li>
+          <li><a href="http://www.teach4taiwan.org/subscribe-newsletter" target="_blank">訂閱電子報</a></li>
+          <li><a href="https://web.npois.com.tw/npopay/tft/index.asp" target="_blank">支持我們</a></li>
+          <li>
+            <ul class="social-links">
+              <li><a href="https://www.facebook.com/teach4taiwan" target="_blank">facebook</a></li>
+              <li><a href="mailto:tft@teach4taiwan.org" target="_blank">mail</a></li>
+            </ul>
+          </li>
+          <li><a href="http://www.teach4taiwan.org" target="_blank">logo</a></li>
+        </ul>
+      </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js" integrity="sha256-+J5cSgDOPu6OT8mt+r5f7/cmvICoEmNdK2ZGz8ql8wc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js" integrity="sha256-aXHOBRCjmgqoEhY6VBWs3Bc+E3447Iuywezt+nkgeZk=" crossorigin="anonymous"></script>
+    <script src="js/bundle.js"></script>
+  </body>
+</html>
