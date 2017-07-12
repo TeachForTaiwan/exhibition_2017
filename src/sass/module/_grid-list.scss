@@ -20,6 +20,41 @@
         @include for-desktop-up {
             width: calc(100% / 6);
         }
+        &--upload {
+            position: relative;
+            background-color: darken($c-primary, 10%);
+            filter: none;
+            .sign {
+                position: absolute;
+                display: flex;
+                width: 100%;
+                height: 100%;
+                font-size: 2em;
+                justify-content: center;
+                align-items: center;
+                transition: opacity .3s .1s ease-in-out, background .3s ease-in-out;
+            }
+            .text {
+                position: absolute;
+                display: flex;
+                width: 100%;
+                height: 100%;
+                font-size: 2em;
+                justify-content: center;
+                align-items: center;
+                transition: opacity .3s .1s ease-in-out;
+                opacity: 0;
+            }
+            &:hover {
+                background-color: $c-primary;
+                .sign {
+                    opacity: 0;
+                }
+                .text {
+                    opacity: 1;
+                }
+            }
+        }
         &__thumbnail {
             display: flex;
             align-items: center;

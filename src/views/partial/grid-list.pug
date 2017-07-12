@@ -1,5 +1,9 @@
 section.grid-list
+  figure.grid-item.grid-item--upload
+    figcaption.sign
+      i.fa.fa-plus(aria-hidden="true")
+    span.text 上傳
   - for(let i = 0; i < 20; i++)
     figure.grid-item
       figcaption.grid-item__thumbnail
-        img.thumbnail(src="https://dummyimage.com/300x200/000/ff0", alt="300x200")
+        img.thumbnail(src="http://placebeard.it/300/200?"+i, alt="300x200")
