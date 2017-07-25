@@ -477,7 +477,18 @@ img {
       position: relative;
       background-color: #ccac00;
       -webkit-filter: none;
-              filter: none; }
+              filter: none;
+      height: 0;
+      padding-top: calc(50% / 1.5); }
+      @media (min-width: 600px) {
+        .grid-list .grid-item--upload {
+          padding-top: calc(100% / 4.5); } }
+      @media (min-width: 900px) {
+        .grid-list .grid-item--upload {
+          padding-top: calc(100% / 6); } }
+      @media (min-width: 1200px) {
+        .grid-list .grid-item--upload {
+          padding-top: calc(100% / 9); } }
       .grid-list .grid-item--upload .sign {
         position: absolute;
         display: -webkit-box;
@@ -485,6 +496,7 @@ img {
         display: flex;
         width: 100%;
         height: 100%;
+        top: 0;
         font-size: 2em;
         -webkit-box-pack: center;
             -ms-flex-pack: center;
@@ -501,6 +513,7 @@ img {
         display: flex;
         width: 100%;
         height: 100%;
+        top: 0;
         font-size: 2em;
         -webkit-box-pack: center;
             -ms-flex-pack: center;
@@ -535,11 +548,15 @@ img {
       top: auto;
       left: 0;
       width: 100%;
-      height: 0;
+      max-height: 0;
       text-align: left;
-      overflow: hidden; }
-    .grid-list .grid-item.is-open .grid-item____detail {
-      height: auto; }
+      overflow: hidden;
+      -webkit-transition: .7s ease-in-out;
+      transition: .7s ease-in-out; }
+    .grid-list .grid-item.is-opened {
+      height: 500px; }
+      .grid-list .grid-item.is-opened .grid-item____detail {
+        max-height: 1000px; }
 
 .main {
   max-width: 1600px;

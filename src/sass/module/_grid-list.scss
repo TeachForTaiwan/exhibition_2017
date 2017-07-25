@@ -24,11 +24,23 @@
             position: relative;
             background-color: darken($c-primary, 10%);
             filter: none;
+            height: 0;
+            padding-top: calc(50% / 1.5);
+            @include for-tablet-portrait-up {
+                padding-top: calc(100% / 4.5);
+            }
+            @include for-tablet-landscape-up {
+                padding-top: calc(100% / 6);
+            }
+            @include for-desktop-up {
+                padding-top: calc(100% / 9);
+            }
             .sign {
                 position: absolute;
                 display: flex;
                 width: 100%;
                 height: 100%;
+                top: 0;
                 font-size: 2em;
                 justify-content: center;
                 align-items: center;
@@ -39,6 +51,7 @@
                 display: flex;
                 width: 100%;
                 height: 100%;
+                top: 0;
                 font-size: 2em;
                 justify-content: center;
                 align-items: center;
@@ -67,13 +80,15 @@
             top: auto;
             left: 0;
             width: 100%;
-            height: 0;
+            max-height: 0;
             text-align: left;
             overflow: hidden;
+            transition: .7s ease-in-out;
         }
-        &.is-open {
+        &.is-opened {
+            height: 500px;
             .grid-item____detail {
-                height: auto;
+                max-height: 1000px;
             }
         }
     }
