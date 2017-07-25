@@ -88,6 +88,12 @@ var setHeight = function setHeight() {
   getDetailHeight();
 };
 
+var closeDetail = function closeDetail(items) {
+  items.forEach(function (item) {
+    item.classList.remove('is-opened');
+  });
+};
+
 var showDetail = function showDetail(item) {
   console.log('data-num: ' + item.dataset.num);
   item.classList.toggle('is-opened');
@@ -99,6 +105,7 @@ var gridItems = document.querySelectorAll('.grid-item--grid');
 
 gridItems.forEach(function (item) {
   item.addEventListener('click', function (e) {
+    closeDetail(gridItems);
     showDetail(e.currentTarget);
   });
 });
