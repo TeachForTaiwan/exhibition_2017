@@ -80,6 +80,30 @@ var upload = new Vue({
   }
 });
 
+var composeDetail = function composeDetail(num) {};
+
+var getDetailHeight = function getDetailHeight() {};
+
+var setHeight = function setHeight() {
+  getDetailHeight();
+};
+
+var showDetail = function showDetail(item) {
+  console.log('data-num: ' + item.dataset.num);
+  item.classList.toggle('is-opened');
+  composeDetail(item.dataset.num);
+  setHeight();
+};
+
+var gridItems = document.querySelectorAll('.grid-item--grid');
+
+gridItems.forEach(function (item) {
+  item.addEventListener('click', function (e) {
+    showDetail(e.currentTarget);
+  });
+});
+
+/* eslint no-unused-vars:0 */
 document.addEventListener('DOMContentLoaded', function () {
   console.log('exhibition_2017');
 });

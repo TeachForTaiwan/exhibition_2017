@@ -5,6 +5,17 @@ section.grid-list
     a(href="upload.html")
       span.text 上傳
   - for(let i = 0; i < 20; i++)
-    figure.grid-item
-      figcaption.grid-item__thumbnail
+    figure.grid-item.grid-item--grid(data-num=i)
+      .grid-item__thumbnail
         img.thumbnail(src="http://placebeard.it/300/200?"+i, alt="300x200")
+      .grid-item__detail(href="#", title="title")
+        a.img-container
+          img.img-full(src="http://placebeard.it/600/400?"+i, alt="600x400")
+        .content-container
+          h2.title lorem
+          h3 Lorem ipsum.
+          p Lorem ipsum dolor sit.
+          h3 Lorem ipsum.
+          p Lorem ipsum dolor sit.
+          h3 Lorem ipsum.
+          p Lorem ipsum dolor sit.
