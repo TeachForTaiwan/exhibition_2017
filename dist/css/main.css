@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*! normalize-scss | MIT/GPLv2 License | bit.ly/normalize-scss */
 /* Document
    ========================================================================== */
@@ -437,6 +438,11 @@ template {
 [hidden] {
   display: none; }
 
+body {
+  background-color: #F7F7F7;
+  line-height: 1.8;
+  letter-spacing: 1.05px; }
+
 img {
   max-width: 100%; }
 
@@ -534,3 +540,85 @@ img {
       overflow: hidden; }
     .grid-list .grid-item.is-open .grid-item____detail {
       height: auto; }
+
+.main {
+  max-width: 1600px;
+  margin: 0 auto; }
+
+.main-title {
+  text-align: center; }
+
+.main-summary {
+  text-align: center;
+  margin-bottom: 2em; }
+
+.datainput-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  .datainput-container [for="pic"] {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .datainput-container [for="pic"]:after {
+      content: "上傳";
+      right: 0;
+      width: 35px;
+      padding: 10px 15px;
+      background-color: #333;
+      color: white;
+      position: absolute;
+      cursor: pointer;
+      font-weight: bold; }
+  .datainput-container .label {
+    margin: 1.5em auto;
+    position: relative; }
+    .datainput-container .label .title {
+      position: absolute;
+      top: -1.6em;
+      left: 0;
+      font-weight: bold; }
+  .datainput-container .input {
+    border: 2px solid #333;
+    padding: 10px 15px;
+    width: 20em; }
+    .datainput-container .input[type="file"] {
+      cursor: pointer; }
+  .datainput-container .textarea {
+    border: 2px solid #333;
+    padding: 10px 15px;
+    height: 5em;
+    width: 20em; }
+
+.func-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }
+  .func-container .btn {
+    margin: 1em; }
+
+.btn {
+  border: none;
+  background-color: #333;
+  color: #F7F7F7;
+  padding: .5em 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  -webkit-transition: .1s ease-in-out;
+  transition: .1s ease-in-out;
+  cursor: pointer; }
+  .btn:hover {
+    color: #FFD700; }

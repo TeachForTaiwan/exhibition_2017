@@ -11,28 +11,30 @@
   </head>
   <body>
     <header></header>
-    <h1 class="main-title">Upload</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quam.</p>
-    <form class="form" id="form--upload" name="form--upload" @submit.prevent="onSubmit">
-      <div class="datainput-container">
-        <label class="label" for="pic"><span class="title">5MB內JPG格式</span>
-          <input id="pic" name="pic" type="file" required="required"/>
-        </label>
-        <label class="label" for="name"><span class="title">投稿者</span>
-          <input id="name" v-model="name" @blur="isValidName() + setLocalStorage()" name="name" type="text" placeholder="投稿者" required="required"/>
-        </label>
-        <label class="label" for="email"><span class="title">聯絡信箱</span>
-          <input id="email" v-model="email" @blur="isValidEmail() + setLocalStorage()" name="email" type="email" placeholder="聯絡信箱" required="required"/>
-        </label>
-        <label class="label" for="message"><span class="title">留言訊息</span>
-          <textarea id="message" v-model="message" @blur="isValidMessage() + setLocalStorage()" name="message" placeholder="留言內容" required="required"></textarea>
-        </label>
-      </div>
-      <div class="func-container">
-        <button class="btn" @click="onReset" type="reset">reset</button>
-        <button class="btn" type="submit">send</button>
-      </div>
-    </form>
+    <main class="main">
+      <h1 class="main-title">Upload</h1>
+      <p class="main-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quam.</p>
+      <form class="form" id="form--upload" name="form--upload" @submit.prevent="onSubmit">
+        <div class="datainput-container">
+          <label class="label" for="pic"><span class="title">5MB內JPG格式</span>
+            <input class="input" id="pic" name="pic" type="file" required="required"/>
+          </label>
+          <label class="label" for="name"><span class="title">投稿者</span>
+            <input class="input" id="name" v-model="name" @blur="isValidName() + setLocalStorage()" name="name" type="text" placeholder="投稿者" required="required"/>
+          </label>
+          <label class="label" for="email"><span class="title">聯絡信箱</span>
+            <input class="input" id="email" v-model="email" @blur="isValidEmail() + setLocalStorage()" name="email" type="email" placeholder="聯絡信箱" required="required"/>
+          </label>
+          <label class="label" for="message"><span class="title">留言訊息</span>
+            <textarea class="textarea" id="message" v-model="message" @blur="isValidMessage() + setLocalStorage()" name="message" placeholder="留言內容" required="required"></textarea>
+          </label>
+        </div>
+        <div class="func-container">
+          <button class="btn" @click="onReset" type="reset">重填</button>
+          <button class="btn" type="submit">上傳</button>
+        </div>
+      </form>
+    </main>
     <footer>
       <div class="container">
         <ul>

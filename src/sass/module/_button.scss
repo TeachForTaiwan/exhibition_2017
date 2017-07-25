@@ -1,0 +1,13 @@
+.btn{
+  border: none;
+  background-color: $c-grey--dark;
+  color: $c-base;
+  padding: .5em 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: .1s ease-in-out;
+  cursor: pointer;
+  &:hover{
+    color: $c-primary;
+  }
+}

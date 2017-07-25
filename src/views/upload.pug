@@ -4,24 +4,25 @@ html(lang="en")
     include partial/head
   body
     include partial/header
-    h1.main-title Upload
-    p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quam.
-    form.form#form--upload(name="form--upload", @submit.prevent="onSubmit")
-      .datainput-container
-        label.label(for="pic")
-          span.title 5MB內JPG格式
-          input#pic(name="pic", type="file", required)
-        label.label(for="name")
-          span.title 投稿者
-          input#name(v-model="name", @blur="isValidName() + setLocalStorage()", name="name", type="text", placeholder="投稿者", required)
-        label.label(for="email")
-          span.title 聯絡信箱
-          input#email(v-model="email", @blur="isValidEmail() + setLocalStorage()", name="email", type="email", placeholder="聯絡信箱", required)
-        label.label(for="message")
-          span.title 留言訊息
-          textarea#message(v-model="message", @blur="isValidMessage() + setLocalStorage()", name="message", placeholder="留言內容", required)
-      .func-container
-        button.btn(@click="onReset", type="reset") reset
-        button.btn(type="submit") send
+    main.main
+      h1.main-title Upload
+      p.main-summary Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, quam.
+      form.form#form--upload(name="form--upload", @submit.prevent="onSubmit")
+        .datainput-container
+          label.label(for="pic")
+            span.title 5MB內JPG格式
+            input#pic.input(name="pic", type="file", required)
+          label.label(for="name")
+            span.title 投稿者
+            input#name.input(v-model="name", @blur="isValidName() + setLocalStorage()", name="name", type="text", placeholder="投稿者", required)
+          label.label(for="email")
+            span.title 聯絡信箱
+            input#email.input(v-model="email", @blur="isValidEmail() + setLocalStorage()", name="email", type="email", placeholder="聯絡信箱", required)
+          label.label(for="message")
+            span.title 留言訊息
+            textarea#message.textarea(v-model="message", @blur="isValidMessage() + setLocalStorage()", name="message", placeholder="留言內容", required)
+        .func-container
+          button.btn(@click="onReset", type="reset") 重填
+          button.btn(type="submit") 上傳
     include partial/footer
     include partial/scripts

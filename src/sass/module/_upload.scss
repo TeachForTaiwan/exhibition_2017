@@ -1,0 +1,68 @@
+.main {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.main-title {
+    text-align: center;
+}
+
+.main-summary {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.form {}
+
+.datainput-container {
+    display: flex;
+    flex-direction: column;
+    [for="pic"] {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:after {
+            content: "上傳";
+            right: 0;
+            width: 35px;
+            padding: 10px 15px;
+            background-color: $c-grey--dark;
+            color: white;
+            position: absolute;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    }
+    .label {
+        margin: 1.5em auto;
+        position: relative;
+        .title {
+            position: absolute;
+            top: -1.6em;
+            left: 0;
+            font-weight: bold;
+        }
+    }
+    .input {
+        border: 2px solid $c-grey--dark;
+        padding: 10px 15px;
+        width: 20em;
+        &[type="file"] {
+            cursor: pointer;
+        }
+    }
+    .textarea {
+        border: 2px solid $c-grey--dark;
+        padding: 10px 15px;
+        height: 5em;
+        width: 20em;
+    }
+}
+
+.func-container {
+  display: flex;
+  justify-content: center;
+    .btn {
+      margin: 1em;
+    }
+}
