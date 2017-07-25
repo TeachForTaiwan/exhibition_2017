@@ -28,6 +28,10 @@ const gridItems = document.querySelectorAll('.grid-item--grid');
 
 gridItems.forEach((item) => {
   item.addEventListener('click', (e) => {
+    if (e.currentTarget.classList.contains('is-opened')) {
+      closeDetail(gridItems);
+      return;
+    }
     closeDetail(gridItems);
     showDetail(e.currentTarget);
   });

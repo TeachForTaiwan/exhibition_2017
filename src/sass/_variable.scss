@@ -1,4 +1,14 @@
 // colors
-$c-primary: #FFD700;
+$c-yellow: #FDD000;
+$c-red: #E95371;
+$c-red--light: #E87D92;
+$c-green: #AACD03;
+$c-purple: #9F3753;
 $c-base: #F7F7F7;
-$c-grey--dark : #333;
+$c-grey: #595757;
+$c-grey--light: #B4B5B5;
+$c-grey--light-2: #E8E8E8;
+$c-grey--dark: #333333;
+$c-primary: $c-yellow;
+
+$ff-base: "Noto Sans TC", "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans", "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
