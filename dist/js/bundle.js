@@ -84,6 +84,36 @@ var upload = new Vue({
 
 // };
 
+var getPosition = function getPosition(elem) {
+  var box = elem.getBoundingClientRect();
+
+  var body = document.body;
+  var docEl = document.documentElement;
+
+  var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+  var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+
+  var clientTop = docEl.clientTop || body.clientTop || 0;
+  var clientLeft = docEl.clientLeft || body.clientLeft || 0;
+
+  var top = box.top + scrollTop - clientTop;
+  var left = box.left + scrollLeft - clientLeft;
+
+  return { top: Math.round(top), left: Math.round(left) };
+};
+
+var scrollTo = function scrollTo(element, to, duration) {
+  if (duration <= 0) return;
+  var difference = to - element.scrollTop;
+  var perTick = difference / duration * 10;
+
+  setTimeout(function () {
+    element.scrollTop += perTick;
+    if (element.scrollTop === to) return;
+    scrollTo(element, to, duration - 10);
+  }, 10);
+};
+
 var getDetailImgHeight = function getDetailImgHeight(item) {
   return item.querySelector('.grid-item__detail .img-full').height;
 };
@@ -120,10 +150,12 @@ var closeDetail = function closeDetail(items) {
 };
 
 var showDetail = function showDetail(item) {
+  var posY = getPosition(item).top;
   console.log('data-num: ' + item.dataset.num);
   item.classList.toggle('is-opened');
   // composeDetail(item.dataset.num);
   setHeight(item);
+  scrollTo(document.body, posY, 300);
 };
 
 var gridItems = document.querySelectorAll('.grid-item--grid');

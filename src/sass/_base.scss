@@ -3,13 +3,17 @@ body {
     line-height: 1.8;
     letter-spacing: 1.05px;
     font-family: $ff-base;
+    overflow-x: hidden;
 }
 
-a{
-  color: inherit;
-  &:link,&:visited,&:hover,&::active{
+a {
     color: inherit;
-  }
+    &:link,
+    &:visited,
+    &:hover,
+    &::active {
+        color: inherit;
+    }
 }
 
 img {
