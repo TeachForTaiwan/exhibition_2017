@@ -80,37 +80,65 @@ var upload = new Vue({
   }
 });
 
-var composeDetail = function composeDetail(num) {};
+// const composeDetail = (num) => {
 
-var getDetailHeight = function getDetailHeight() {};
+// };
 
-var setHeight = function setHeight() {
-  getDetailHeight();
+var getDetailImgHeight = function getDetailImgHeight(item) {
+  return item.querySelector('.grid-item__detail .img-full').height;
+};
+var getThumbnailHeight = function getThumbnailHeight(item) {
+  return item.querySelector('.thumbnail').height;
+};
+
+var setHeight = function setHeight(item) {
+  var currentDetail = item;
+  var targetHeight = getDetailImgHeight(item) + getThumbnailHeight(item) + 20;
+  if (window.innerWidth >= 600) {
+    currentDetail.style.height = targetHeight + 'px';
+    currentDetail.style.maxHeight = targetHeight + 'px';
+  } else {
+    currentDetail.style.height = targetHeight + 300 + 'px';
+    currentDetail.style.maxHeight = targetHeight + 300 + 'px';
+  }
+};
+
+var removeHeight = function removeHeight(items) {
+  items.forEach(function (item) {
+    item.style.maxHeight = '';
+    item.style.height = '';
+  });
 };
 
 var closeDetail = function closeDetail(items) {
   items.forEach(function (item) {
     item.classList.remove('is-opened');
+    item.style.maxHeight = '';
+    item.style.height = '';
   });
+  removeHeight(items);
 };
 
 var showDetail = function showDetail(item) {
   console.log('data-num: ' + item.dataset.num);
   item.classList.toggle('is-opened');
-  composeDetail(item.dataset.num);
-  setHeight();
+  // composeDetail(item.dataset.num);
+  setHeight(item);
 };
 
 var gridItems = document.querySelectorAll('.grid-item--grid');
+var gridItemThumbnails = document.querySelectorAll('.grid-item--grid .grid-item__thumbnail');
 
-gridItems.forEach(function (item) {
-  item.addEventListener('click', function (e) {
-    if (e.currentTarget.classList.contains('is-opened')) {
+document.addEventListener('DOMContentLoaded', function () {
+  gridItemThumbnails.forEach(function (item) {
+    item.addEventListener('click', function (e) {
+      if (e.currentTarget.parentNode.classList.contains('is-opened')) {
+        closeDetail(gridItems);
+        return;
+      }
       closeDetail(gridItems);
-      return;
-    }
-    closeDetail(gridItems);
-    showDetail(e.currentTarget);
+      showDetail(e.currentTarget.parentNode);
+    });
   });
 });
 

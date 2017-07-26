@@ -5,7 +5,6 @@
         margin: 0;
         width: 50%;
         filter: grayscale(1);
-        cursor: pointer;
         transition: .1s ease-in-out;
         &:hover {
             opacity: .95;
@@ -68,13 +67,19 @@
                 }
             }
         }
+        &--grid {
+            max-height: 200px;
+            transition: .7s ease-in-out;
+        }
         &__thumbnail {
             display: flex;
             align-items: center;
             position: relative;
+            cursor: pointer;
         }
         &__detail {
             display: flex;
+            flex-direction: column;
             flex-wrap: wrap;
             position: absolute;
             z-index: 800;
@@ -88,17 +93,43 @@
             overflow: hidden;
             background: $c-base;
             transition: .7s ease-in-out;
+            @include for-tablet-portrait-up {
+                flex-direction: row;
+            }
             .img-container {
-                width: 60%;
+                width: 100%;
+                @include for-tablet-portrait-up {
+                    width: 60%;
+                }
+                @include for-tablet-landscape-up {
+                    width: 50%;
+                }
             }
             .content-container {
                 flex: 1;
-                padding: 0 2em;
+                padding: 0 1em;
+                @include for-tablet-portrait-up {
+                    padding: 0 2em;
+                }
+                h2 {
+                    margin: 0;
+                    @include for-tablet-landscape-up {
+                        margin: 1em 0 0;
+                    }
+                }
+                h3 {
+                    margin: .6em 0;
+                    margin-bottom: .3em;
+                }
+                p {
+                    margin: .6em 0;
+                    margin-top: .3em;
+                }
             }
         }
         &.is-opened {
-            height: 600px;
             filter: none;
+            &.grid-item--grid {}
             .grid-item__thumbnail {
                 &:after {
                     content: "";
@@ -116,8 +147,12 @@
             .grid-item__detail {
                 visibility: visible;
                 opacity: 1;
-                padding: 10px;
                 max-height: 1000px;
+                z-index: 0;
+                padding: 10px 0;
+                @include for-tablet-portrait-up {
+                    padding: 10px;
+                }
             }
         }
     }
