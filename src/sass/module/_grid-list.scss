@@ -106,24 +106,43 @@
                 }
             }
             .content-container {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
                 flex: 1;
                 padding: 0 1em;
+                color: $c-grey--dark;
                 @include for-tablet-portrait-up {
                     padding: 0 2em;
                 }
-                h2 {
+                .title-em {
+                    color: $c-primary;
+                    border-bottom: 2px solid rgba($c-grey--dark, .3);
+                    padding: 0 .5em;
+                    margin: 0 .2em;
+                }
+                .title {
                     margin: 0;
                     @include for-tablet-landscape-up {
                         margin: 1em 0 0;
                     }
                 }
-                h3 {
+                .subtitle {
                     margin: .6em 0;
                     margin-bottom: .3em;
                 }
-                p {
+                .author {
                     margin: .6em 0;
                     margin-top: .3em;
+                    align-self: flex-end;
+                    .age {
+                        &:before {
+                            content: "──";
+                        }
+                        &:after {
+                            content: "，";
+                        }
+                    }
                 }
             }
         }
