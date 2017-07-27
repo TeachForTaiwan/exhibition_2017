@@ -114,27 +114,32 @@ var scrollTo = function scrollTo(element, to, duration) {
   }, 10);
 };
 
-var getDetailImgHeight = function getDetailImgHeight(item) {
-  return item.querySelector('.grid-item__detail .img-full').height;
+// const getDetailImgHeight = item => item.querySelector('.grid-item__detail .img-full').height;
+var getDetailHeight = function getDetailHeight(item) {
+  return item.querySelector('.grid-item__detail').offsetHeight;
 };
 var getThumbnailHeight = function getThumbnailHeight(item) {
   return item.querySelector('.thumbnail').height;
 };
 
 var setHeight = function setHeight(item) {
-  var currentDetail = item;
-  var targetHeight = getDetailImgHeight(item) + getThumbnailHeight(item) + 20;
-  if (window.innerWidth >= 600) {
-    currentDetail.style.height = targetHeight + 'px';
-    currentDetail.style.maxHeight = targetHeight + 'px';
-  } else {
-    currentDetail.style.height = targetHeight + 300 + 'px';
-    currentDetail.style.maxHeight = targetHeight + 300 + 'px';
-  }
+  var currentItem = item;
+  var targetHeight = getDetailHeight(item) + getThumbnailHeight(item);
+  // const targetHeight = getDetailImgHeight(item) + getThumbnailHeight(item) + 20;
+  // if (window.innerWidth >= 600) {
+  currentItem.style.height = targetHeight + 20 + 'px';
+  currentItem.style.maxHeight = targetHeight + 20 + 'px';
+  // } else {
+  // currentItem.style.height = `${targetHeight + 300}px`;
+  // currentItem.style.maxHeight = `${targetHeight + 300}px`;
+  // }
 };
 
 var removeHeight = function removeHeight(items) {
   items.forEach(function (item) {
+    if (item.classList.contains('is-opened')) {
+      return;
+    }
     item.style.maxHeight = '';
     item.style.height = '';
   });

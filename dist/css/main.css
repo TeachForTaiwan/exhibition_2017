@@ -566,7 +566,6 @@ img {
       visibility: hidden;
       opacity: 0;
       width: 100%;
-      max-height: 0;
       text-align: left;
       overflow: hidden;
       background: #F7F7F7;

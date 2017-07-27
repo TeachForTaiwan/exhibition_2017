@@ -33,23 +33,28 @@ const scrollTo = (element, to, duration) => {
   }, 10);
 };
 
-const getDetailImgHeight = item => item.querySelector('.grid-item__detail .img-full').height;
+// const getDetailImgHeight = item => item.querySelector('.grid-item__detail .img-full').height;
+const getDetailHeight = item => item.querySelector('.grid-item__detail').offsetHeight;
 const getThumbnailHeight = item => item.querySelector('.thumbnail').height;
 
 const setHeight = (item) => {
-  const currentDetail = item;
-  const targetHeight = getDetailImgHeight(item) + getThumbnailHeight(item) + 20;
-  if (window.innerWidth >= 600) {
-    currentDetail.style.height = `${targetHeight}px`;
-    currentDetail.style.maxHeight = `${targetHeight}px`;
-  } else {
-    currentDetail.style.height = `${targetHeight + 300}px`;
-    currentDetail.style.maxHeight = `${targetHeight + 300}px`;
-  }
+  const currentItem = item;
+  const targetHeight = getDetailHeight(item) + getThumbnailHeight(item);
+  // const targetHeight = getDetailImgHeight(item) + getThumbnailHeight(item) + 20;
+  // if (window.innerWidth >= 600) {
+  currentItem.style.height = `${targetHeight + 20}px`;
+  currentItem.style.maxHeight = `${targetHeight + 20}px`;
+  // } else {
+  // currentItem.style.height = `${targetHeight + 300}px`;
+  // currentItem.style.maxHeight = `${targetHeight + 300}px`;
+  // }
 };
 
 const removeHeight = (items) => {
   items.forEach((item) => {
+    if (item.classList.contains('is-opened')) {
+      return;
+    }
     item.style.maxHeight = '';
     item.style.height = '';
   });
