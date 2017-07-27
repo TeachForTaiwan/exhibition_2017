@@ -97,6 +97,30 @@
                 flex-direction: row;
             }
             .img-container {
+                position: relative;
+                padding-top: calc(300% / 4);
+                @include for-tablet-portrait-up {
+                    padding-top: 40%;
+                }
+                @include for-tablet-landscape-up {
+                    padding-top: calc(100% /3);
+                }
+                .img-full {
+                    position: absolute;
+                    opacity: 0;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    &.loading {
+                        opacity: 1;
+                        max-width: 9999px;
+                        filter: blur(10px);
+                        transform: scale(.9);
+                    }
+                    &.onload {
+                        opacity: 1;
+                    }
+                }
                 width: 100%;
                 @include for-tablet-portrait-up {
                     width: 60%;
@@ -171,6 +195,11 @@
                 padding: 10px 0;
                 @include for-tablet-portrait-up {
                     padding: 10px;
+                }
+                .img-container {
+                    .img-full {
+                        // position: absolute;
+                    }
                 }
             }
         }

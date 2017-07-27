@@ -81,6 +81,19 @@ const showDetail = (item) => {
 const gridItems = document.querySelectorAll('.grid-item--grid');
 const gridItemThumbnails = document.querySelectorAll('.grid-item--grid .grid-item__thumbnail');
 
+const loadImage = (elem) => {
+  const imgSmall = elem.querySelector('.img-full');
+  const imgLarge = new Image();
+  imgLarge.src = imgSmall.dataset.src;
+  imgLarge.addEventListener('load', () => {
+    imgLarge.classList.add('onload', 'img-full');
+    setTimeout(() => {
+      imgSmall.classList.add('onload');
+    }, 500);
+  }, false);
+  imgSmall.parentNode.appendChild(imgLarge);
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   gridItemThumbnails.forEach((item) => {
     item.addEventListener('click', (e) => {
@@ -90,6 +103,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       closeDetail(gridItems);
       showDetail(e.currentTarget.parentNode);
+      if (!e.currentTarget.parentNode.querySelector('.img-full').classList.contains('onload')) {
+        loadImage(e.currentTarget.parentNode);
+      }
     });
   });
+});
+
+window.addEventListener('resize', () => {
+  closeDetail(gridItems);
 });

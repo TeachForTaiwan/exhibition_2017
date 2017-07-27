@@ -166,6 +166,19 @@ var showDetail = function showDetail(item) {
 var gridItems = document.querySelectorAll('.grid-item--grid');
 var gridItemThumbnails = document.querySelectorAll('.grid-item--grid .grid-item__thumbnail');
 
+var loadImage = function loadImage(elem) {
+  var imgSmall = elem.querySelector('.img-full');
+  var imgLarge = new Image();
+  imgLarge.src = imgSmall.dataset.src;
+  imgLarge.addEventListener('load', function () {
+    imgLarge.classList.add('onload', 'img-full');
+    setTimeout(function () {
+      imgSmall.classList.add('onload');
+    }, 500);
+  }, false);
+  imgSmall.parentNode.appendChild(imgLarge);
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   gridItemThumbnails.forEach(function (item) {
     item.addEventListener('click', function (e) {
@@ -175,8 +188,15 @@ document.addEventListener('DOMContentLoaded', function () {
       }
       closeDetail(gridItems);
       showDetail(e.currentTarget.parentNode);
+      if (!e.currentTarget.parentNode.querySelector('.img-full').classList.contains('onload')) {
+        loadImage(e.currentTarget.parentNode);
+      }
     });
   });
+});
+
+window.addEventListener('resize', function () {
+  closeDetail(gridItems);
 });
 
 /* eslint no-unused-vars:0 */
