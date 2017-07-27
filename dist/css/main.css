@@ -458,7 +458,9 @@ img {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap; }
+      flex-wrap: wrap;
+  max-width: 1800px;
+  margin: 0 auto; }
   .grid-list .grid-item {
     margin: 0;
     width: 50%;
