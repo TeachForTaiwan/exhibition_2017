@@ -22,6 +22,7 @@
         &--upload {
             position: relative;
             background-color: darken($c-primary, 10%);
+            color: $c-base;
             filter: none;
             height: 0;
             padding-top: calc(50% / 1.5);
