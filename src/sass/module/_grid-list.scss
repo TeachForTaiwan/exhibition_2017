@@ -79,6 +79,13 @@
             align-items: center;
             position: relative;
             cursor: pointer;
+            padding-top: calc(100% / 3 * 2);
+            overflow: hidden;
+            .thumbnail {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
         }
         &__detail {
             display: flex;

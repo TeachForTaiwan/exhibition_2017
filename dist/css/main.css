@@ -551,7 +551,13 @@ img {
           -ms-flex-align: center;
               align-items: center;
       position: relative;
-      cursor: pointer; }
+      cursor: pointer;
+      padding-top: calc(100% / 3 * 2);
+      overflow: hidden; }
+      .grid-list .grid-item__thumbnail .thumbnail {
+        position: absolute;
+        top: 0;
+        left: 0; }
     .grid-list .grid-item__detail {
       display: -webkit-box;
       display: -ms-flexbox;
