@@ -609,6 +609,8 @@ img {
                     filter: blur(10px);
             -webkit-transform: scale(0.9);
                     transform: scale(0.9); }
+            .grid-list .grid-item__detail .img-container .img-full.loading.onload {
+              visibility: hidden; }
           .grid-list .grid-item__detail .img-container .img-full.onload {
             opacity: 1; }
         @media (min-width: 600px) {

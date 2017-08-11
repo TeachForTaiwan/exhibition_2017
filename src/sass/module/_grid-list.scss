@@ -125,6 +125,9 @@
                         max-width: 9999px;
                         filter: blur(10px);
                         transform: scale(.9);
+                        &.onload {
+                          visibility: hidden;
+                        }
                     }
                     &.onload {
                         opacity: 1;
