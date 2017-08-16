@@ -1,8 +1,3 @@
-
-// const composeDetail = (num) => {
-
-// };
-
 const getPosition = (elem) => {
   const box = elem.getBoundingClientRect();
 
@@ -33,21 +28,13 @@ const scrollTo = (element, to, duration) => {
   }, 10);
 };
 
-// const getDetailImgHeight = item => item.querySelector('.grid-item__detail .img-full').height;
 const getDetailHeight = item => item.querySelector('.grid-item__detail').offsetHeight;
 const getThumbnailHeight = item => item.querySelector('.thumbnail').height;
 
 const setHeight = (item) => {
-  const currentItem = item;
   const targetHeight = getDetailHeight(item) + getThumbnailHeight(item);
-  // const targetHeight = getDetailImgHeight(item) + getThumbnailHeight(item) + 20;
-  // if (window.innerWidth >= 600) {
-  currentItem.style.height = `${targetHeight + 20}px`;
-  currentItem.style.maxHeight = `${targetHeight + 20}px`;
-  // } else {
-  // currentItem.style.height = `${targetHeight + 300}px`;
-  // currentItem.style.maxHeight = `${targetHeight + 300}px`;
-  // }
+  item.style.height = `${targetHeight + 20}px`;
+  item.style.maxHeight = `${targetHeight + 20}px`;
 };
 
 const removeHeight = (items) => {
@@ -73,7 +60,6 @@ const showDetail = (item) => {
   const posY = getPosition(item).top;
   console.log(`data-num: ${item.dataset.num}`);
   item.classList.toggle('is-opened');
-  // composeDetail(item.dataset.num);
   setHeight(item);
   scrollTo(document.body, posY, 300);
 };
