@@ -111,9 +111,6 @@
       @include for-tablet-portrait-up {
         flex-direction: row;
       }
-      &.is-fade {
-        opacity: 0;
-      }
       .img-container {
         position: relative;
         padding-top: calc(300% / 4);
@@ -216,6 +213,9 @@
         padding: 10px 0;
         @include for-tablet-portrait-up {
           padding: 10px;
+        }
+        &.is-fade {
+          opacity: 0;
         }
         .img-container {
           .img-full {

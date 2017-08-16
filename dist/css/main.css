@@ -594,8 +594,6 @@ img {
           -webkit-box-direction: normal;
               -ms-flex-direction: row;
                   flex-direction: row; } }
-      .grid-list .grid-item__detail.is-fade {
-        opacity: 0; }
       .grid-list .grid-item__detail .img-container {
         position: relative;
         padding-top: calc(300% / 4);
@@ -694,6 +692,8 @@ img {
         @media (min-width: 600px) {
           .grid-list .grid-item.is-opened .grid-item__detail {
             padding: 10px; } }
+        .grid-list .grid-item.is-opened .grid-item__detail.is-fade {
+          opacity: 0; }
 
 .main {
   max-width: 1600px;
