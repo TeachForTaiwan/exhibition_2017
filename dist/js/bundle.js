@@ -123,17 +123,21 @@ var setHeight = function setHeight(item) {
   item.style.maxHeight = targetHeight + 20 + 'px';
 };
 
+var minusHeightAnim = function minusHeightAnim(item) {
+  item.style.maxHeight = 0;
+};
+
 var removeHeight = function removeHeight(items) {
   [].forEach.call(items, function (item) {
     if (item.classList.contains('is-opened')) {
       return;
     }
-    item.style.maxHeight = 0;
-    item.style.height = 0;
+    item.style.maxHeight = '';
+    item.style.height = '';
   });
 };
 
-var closeDetail = function closeDetail(items) {
+var closeDetails = function closeDetails(items) {
   [].forEach.call(items, function (item) {
     item.classList.remove('is-opened');
     item.style.maxHeight = '';
@@ -170,10 +174,13 @@ document.addEventListener('DOMContentLoaded', function () {
   [].forEach.call(gridItemThumbnails, function (item) {
     item.addEventListener('click', function (e) {
       if (e.currentTarget.parentNode.classList.contains('is-opened')) {
-        closeDetail(gridItems);
+        minusHeightAnim(item);
+        setTimeout(function () {
+          closeDetails(gridItems);
+        }, 200);
         return;
       }
-      closeDetail(gridItems);
+      closeDetails(gridItems);
       showDetail(e.currentTarget.parentNode);
       if (!e.currentTarget.parentNode.querySelector('.img-full').classList.contains('onload')) {
         loadImage(e.currentTarget.parentNode);
@@ -183,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 window.addEventListener('resize', function () {
-  closeDetail(gridItems);
+  closeDetails(gridItems);
 });
 
 /* eslint no-unused-vars:0 */
