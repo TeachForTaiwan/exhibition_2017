@@ -594,6 +594,8 @@ img {
           -webkit-box-direction: normal;
               -ms-flex-direction: row;
                   flex-direction: row; } }
+      .grid-list .grid-item__detail.is-fade {
+        opacity: 0; }
       .grid-list .grid-item__detail .img-container {
         position: relative;
         padding-top: calc(300% / 4);

@@ -123,7 +123,8 @@ var setHeight = function setHeight(item) {
   item.style.maxHeight = targetHeight + 20 + 'px';
 };
 
-var minusHeightAnim = function minusHeightAnim(item) {
+var hideDetailAnim = function hideDetailAnim(item) {
+  item.querySelector('.grid-item__detail').classList.add('is-fade');
   item.style.maxHeight = 0;
 };
 
@@ -140,6 +141,7 @@ var removeHeight = function removeHeight(items) {
 var closeDetails = function closeDetails(items) {
   [].forEach.call(items, function (item) {
     item.classList.remove('is-opened');
+    item.querySelector('.grid-item__detail').classList.remove('is-fade');
     item.style.maxHeight = '';
     item.style.height = '';
   });
@@ -174,10 +176,10 @@ document.addEventListener('DOMContentLoaded', function () {
   [].forEach.call(gridItemThumbnails, function (item) {
     item.addEventListener('click', function (e) {
       if (e.currentTarget.parentNode.classList.contains('is-opened')) {
-        minusHeightAnim(item);
+        hideDetailAnim(e.currentTarget.parentNode);
         setTimeout(function () {
           closeDetails(gridItems);
-        }, 200);
+        }, 700);
         return;
       }
       closeDetails(gridItems);
