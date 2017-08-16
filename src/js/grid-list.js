@@ -42,8 +42,8 @@ const removeHeight = (items) => {
     if (item.classList.contains('is-opened')) {
       return;
     }
-    item.style.maxHeight = '';
-    item.style.height = '';
+    item.style.maxHeight = 0;
+    item.style.height = 0;
   });
 };
 
