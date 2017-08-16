@@ -136,7 +136,7 @@ var setHeight = function setHeight(item) {
 };
 
 var removeHeight = function removeHeight(items) {
-  items.forEach(function (item) {
+  [].forEach.call(items, function (item) {
     if (item.classList.contains('is-opened')) {
       return;
     }
@@ -146,7 +146,7 @@ var removeHeight = function removeHeight(items) {
 };
 
 var closeDetail = function closeDetail(items) {
-  items.forEach(function (item) {
+  [].forEach.call(items, function (item) {
     item.classList.remove('is-opened');
     item.style.maxHeight = '';
     item.style.height = '';
@@ -164,7 +164,6 @@ var showDetail = function showDetail(item) {
 };
 
 var gridItems = document.querySelectorAll('.grid-item--grid');
-var gridItemThumbnails = document.querySelectorAll('.grid-item--grid .grid-item__thumbnail');
 
 var loadImage = function loadImage(elem) {
   var imgSmall = elem.querySelector('.img-full');
@@ -180,7 +179,8 @@ var loadImage = function loadImage(elem) {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-  gridItemThumbnails.forEach(function (item) {
+  var gridItemThumbnails = document.querySelectorAll('.grid-item--grid .grid-item__thumbnail');
+  [].forEach.call(gridItemThumbnails, function (item) {
     item.addEventListener('click', function (e) {
       if (e.currentTarget.parentNode.classList.contains('is-opened')) {
         closeDetail(gridItems);

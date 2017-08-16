@@ -51,7 +51,7 @@ const setHeight = (item) => {
 };
 
 const removeHeight = (items) => {
-  items.forEach((item) => {
+  [].forEach.call(items, (item) => {
     if (item.classList.contains('is-opened')) {
       return;
     }
@@ -61,7 +61,7 @@ const removeHeight = (items) => {
 };
 
 const closeDetail = (items) => {
-  items.forEach((item) => {
+  [].forEach.call(items, (item) => {
     item.classList.remove('is-opened');
     item.style.maxHeight = '';
     item.style.height = '';
@@ -79,7 +79,6 @@ const showDetail = (item) => {
 };
 
 const gridItems = document.querySelectorAll('.grid-item--grid');
-const gridItemThumbnails = document.querySelectorAll('.grid-item--grid .grid-item__thumbnail');
 
 const loadImage = (elem) => {
   const imgSmall = elem.querySelector('.img-full');
@@ -95,7 +94,8 @@ const loadImage = (elem) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  gridItemThumbnails.forEach((item) => {
+  const gridItemThumbnails = document.querySelectorAll('.grid-item--grid .grid-item__thumbnail');
+  [].forEach.call(gridItemThumbnails, (item) => {
     item.addEventListener('click', (e) => {
       if (e.currentTarget.parentNode.classList.contains('is-opened')) {
         closeDetail(gridItems);
