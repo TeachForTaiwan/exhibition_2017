@@ -474,12 +474,14 @@ img {
               filter: grayscale(0); }
     @media (min-width: 600px) {
       .grid-list .grid-item {
+        width: 33.333%;
         width: calc(100% / 3); } }
     @media (min-width: 900px) {
       .grid-list .grid-item {
         width: calc(100% / 4); } }
     @media (min-width: 1200px) {
       .grid-list .grid-item {
+        width: 16.667%;
         width: calc(100% / 6); } }
     .grid-list .grid-item--upload {
       position: relative;
@@ -487,6 +489,7 @@ img {
       color: #F7F7F7;
       -webkit-filter: none;
               filter: none;
+      height: 0;
       padding-top: calc(50% / 1.5); }
       @media (min-width: 600px) {
         .grid-list .grid-item--upload {
