@@ -33,13 +33,8 @@ const getThumbnailHeight = item => item.querySelector('.thumbnail').height;
 
 const setHeight = (item) => {
   const targetHeight = getDetailHeight(item) + getThumbnailHeight(item);
-  item.style.height = `${targetHeight + 20}px`;
+  item.style.height = '100%';
   item.style.maxHeight = `${targetHeight + 20}px`;
-};
-
-const hideDetailAnim = (item) => {
-  item.querySelector('.grid-item__detail').classList.add('is-fade')
-  item.style.maxHeight = 0;
 };
 
 const removeHeight = (items) => {
@@ -52,10 +47,9 @@ const removeHeight = (items) => {
   });
 };
 
-const closeDetails = (items) => {
+const closeDetail = (items) => {
   [].forEach.call(items, (item) => {
     item.classList.remove('is-opened');
-    item.querySelector('.grid-item__detail').classList.remove('is-fade');
     item.style.maxHeight = '';
     item.style.height = '';
   });
@@ -90,13 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
   [].forEach.call(gridItemThumbnails, (item) => {
     item.addEventListener('click', (e) => {
       if (e.currentTarget.parentNode.classList.contains('is-opened')) {
-        hideDetailAnim(e.currentTarget.parentNode);
-        setTimeout(() => {
-          closeDetails(gridItems);
-        }, 700);
+        closeDetail(gridItems);
         return;
       }
-      closeDetails(gridItems);
+      closeDetail(gridItems);
       showDetail(e.currentTarget.parentNode);
       if (!e.currentTarget.parentNode.querySelector('.img-full').classList.contains('onload')) {
         loadImage(e.currentTarget.parentNode);
@@ -106,5 +97,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('resize', () => {
-  closeDetails(gridItems);
+  closeDetail(gridItems);
 });

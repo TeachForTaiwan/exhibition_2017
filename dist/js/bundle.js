@@ -119,13 +119,8 @@ var getThumbnailHeight = function getThumbnailHeight(item) {
 
 var setHeight = function setHeight(item) {
   var targetHeight = getDetailHeight(item) + getThumbnailHeight(item);
-  item.style.height = targetHeight + 20 + 'px';
+  item.style.height = '100%';
   item.style.maxHeight = targetHeight + 20 + 'px';
-};
-
-var hideDetailAnim = function hideDetailAnim(item) {
-  item.querySelector('.grid-item__detail').classList.add('is-fade');
-  item.style.maxHeight = 0;
 };
 
 var removeHeight = function removeHeight(items) {
@@ -138,10 +133,9 @@ var removeHeight = function removeHeight(items) {
   });
 };
 
-var closeDetails = function closeDetails(items) {
+var closeDetail = function closeDetail(items) {
   [].forEach.call(items, function (item) {
     item.classList.remove('is-opened');
-    item.querySelector('.grid-item__detail').classList.remove('is-fade');
     item.style.maxHeight = '';
     item.style.height = '';
   });
@@ -176,13 +170,10 @@ document.addEventListener('DOMContentLoaded', function () {
   [].forEach.call(gridItemThumbnails, function (item) {
     item.addEventListener('click', function (e) {
       if (e.currentTarget.parentNode.classList.contains('is-opened')) {
-        hideDetailAnim(e.currentTarget.parentNode);
-        setTimeout(function () {
-          closeDetails(gridItems);
-        }, 700);
+        closeDetail(gridItems);
         return;
       }
-      closeDetails(gridItems);
+      closeDetail(gridItems);
       showDetail(e.currentTarget.parentNode);
       if (!e.currentTarget.parentNode.querySelector('.img-full').classList.contains('onload')) {
         loadImage(e.currentTarget.parentNode);
@@ -192,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 window.addEventListener('resize', function () {
-  closeDetails(gridItems);
+  closeDetail(gridItems);
 });
 
 /* eslint no-unused-vars:0 */
