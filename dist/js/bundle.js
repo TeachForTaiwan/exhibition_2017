@@ -119,7 +119,7 @@ var getThumbnailHeight = function getThumbnailHeight(item) {
 
 var setHeight = function setHeight(item) {
   var targetHeight = getDetailHeight(item) + getThumbnailHeight(item);
-  item.style.height = '100%';
+  item.style.height = targetHeight + 20 + 'px';
   item.style.maxHeight = targetHeight + 20 + 'px';
 };
 
