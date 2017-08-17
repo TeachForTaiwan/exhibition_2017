@@ -75,6 +75,7 @@
     &--grid {
       max-height: 200px;
       transition: .7s ease-in-out;
+      will-change: max-height;
     }
     &__thumbnail {
       display: flex;

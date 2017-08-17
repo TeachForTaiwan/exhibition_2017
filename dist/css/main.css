@@ -544,7 +544,8 @@ img {
     .grid-list .grid-item--grid {
       max-height: 200px;
       -webkit-transition: .7s ease-in-out;
-      transition: .7s ease-in-out; }
+      transition: .7s ease-in-out;
+      will-change: max-height; }
     .grid-list .grid-item__thumbnail {
       display: -webkit-box;
       display: -ms-flexbox;
